@@ -20,7 +20,7 @@ function make() {
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (param) {
               var numberOfTodos = List.length(param[/* state */1][/* items */0]);
-              return React.createElement("div", undefined, "There are " + (String(numberOfTodos) + " todo s"));
+              return React.createElement("div", undefined, "There are " + (String(numberOfTodos) + " todo(s)"));
             }),
           /* initialState */(function () {
               return /* record */[/* items : :: */[

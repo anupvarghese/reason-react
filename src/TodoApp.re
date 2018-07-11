@@ -13,6 +13,6 @@ let make = _children => {
   reducer: ((), _) => ReasonReact.NoUpdate,
   render: ({state: {items}}) => {
     let numberOfTodos = List.length(items);
-    <div> (ReasonReact.string("There are " ++ string_of_int(numberOfTodos) ++ " todo s")) </div>;
+    <div> (ReasonReact.string("There are " ++ string_of_int(numberOfTodos) ++ " todo(s)")) </div>
   },
 };
