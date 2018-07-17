@@ -2,10 +2,15 @@
 'use strict';
 
 var List = require("bs-platform/lib/js/list.js");
+var $$Array = require("bs-platform/lib/js/array.js");
 var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
 
 var component = ReasonReact.reducerComponent("TodoApp");
+
+function str(prim) {
+  return prim;
+}
 
 function make() {
   return /* record */[
@@ -19,8 +24,12 @@ function make() {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (param) {
-              var numberOfTodos = List.length(param[/* state */1][/* items */0]);
-              return React.createElement("div", undefined, "There are " + (String(numberOfTodos) + " todo(s)"));
+              var items = param[/* state */1][/* items */0];
+              var numberOfTodos = List.length(items);
+              return React.createElement("div", undefined, $$Array.of_list(List.map((function (todo) {
+                                    var match = todo[/* completed */1];
+                                    return React.createElement("div", undefined, React.createElement("div", undefined, todo[/* title */0]), React.createElement("div", undefined, match ? "Done" : "Pending"));
+                                  }), items)), React.createElement("div", undefined, "There are " + (String(numberOfTodos) + " todo(s)")));
             }),
           /* initialState */(function () {
               return /* record */[/* items : :: */[
@@ -41,5 +50,6 @@ function make() {
 }
 
 exports.component = component;
+exports.str = str;
 exports.make = make;
 /* component Not a pure module */
